@@ -17,5 +17,7 @@ public class UsuarioProfile : Profile
         CreateMap<InUpdateUserDto, Usuario>();
 
         CreateMap<InCreateEnderecoDto, Endereco>();
+
+        CreateMap<Veiculo, Veiculo>();
     }
 }

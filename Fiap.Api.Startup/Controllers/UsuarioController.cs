@@ -71,13 +71,10 @@ public class UsuarioController : ControllerBase
 
         try
         {
-            //Usuario usuario = _mapper.Map<Usuario>(usuarioModel);
-
             usuarioRepository.Inserir(usuarioModel);
 
             var location = new Uri(Request.GetEncodedUrl() + "/" + usuarioModel.Id);
 
-            //return Created(location, usuarioModel);
             return Created(location, _mapper.Map<OutCreateUserDto>(usuarioModel));
         }
         catch (Exception error)
@@ -138,9 +135,6 @@ public class UsuarioController : ControllerBase
         {
             return BadRequest(new { message = $"Não foi possível cadastrar o Usuario. Detalhes: {error.Message}" });
         }
-
-
     }
-
 
 }
