@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using Fiap.Api.Startup.Models;
 
 namespace Fiap.Api.Startup.DTO.UsuarioDTO;
 
@@ -16,4 +15,7 @@ public class OutCreateUserDto
     public string Celular { get; set; }
 
     public string Documento { get; set; }
+
+    public Endereco? Endereco { get; set; }
+    public IEnumerable<Veiculo>? Veiculo { get; set; }
 }

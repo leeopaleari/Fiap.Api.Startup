@@ -35,4 +35,7 @@ public class Usuario
 
     [JsonIgnore]
     public virtual Endereco? Endereco { get; set; }
+
+    [JsonIgnore]
+    public virtual IEnumerable<Veiculo>? Veiculos { get; set; }
 }

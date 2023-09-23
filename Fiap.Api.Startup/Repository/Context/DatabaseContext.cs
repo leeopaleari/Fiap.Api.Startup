@@ -14,6 +14,12 @@ public class DatabaseContext : DbContext
             .IsRequired(false)
             .HasForeignKey<Endereco>(e => e.UsuarioId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Usuario>()
+                .HasMany(u => u.Veiculos)
+                .WithOne(v => v.Usuario)
+                .HasForeignKey(v => v.UsuarioId);
+
     }
     public DatabaseContext(DbContextOptions options) : base(options)
     {

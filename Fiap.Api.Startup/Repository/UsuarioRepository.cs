@@ -19,8 +19,9 @@ public class UsuarioRepository
         var lista = new List<Usuario>();
 
         lista = context.Usuario
-            .Include(e => e.Endereco)
-            .OrderBy(e => e.Id)
+            .Include(u => u.Endereco)
+            .Include(u => u.Veiculos)
+            .OrderBy(u => u.Id)
             .ToList<Usuario>();
 
         return lista;

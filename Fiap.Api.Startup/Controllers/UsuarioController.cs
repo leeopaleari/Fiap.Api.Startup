@@ -33,7 +33,9 @@ public class UsuarioController : ControllerBase
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<List<OutListUserDto>>(usuarios));
+            var lista = _mapper.Map<List<OutListUserDto>>(usuarios);
+
+            return Ok(lista);
         }
         catch (Exception ex)
         {

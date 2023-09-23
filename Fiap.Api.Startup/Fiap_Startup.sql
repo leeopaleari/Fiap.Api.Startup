@@ -55,7 +55,9 @@ CREATE TABLE T_VEICULO (
     placa           VARCHAR2(8) NOT NULL,
     quilometragem   NUMBER,
     ano_modelo      NUMBER  NOT NULL,
-    ano_fabricacao  NUMBER NOT NULL
+    ano_fabricacao  NUMBER NOT NULL,
+    t_usuario_id    NUMBER NOT NULL,
+    CONSTRAINT fk_usuario_veiculo FOREIGN KEY (t_usuario_id) REFERENCES T_USUARIO(id)
 );
 
 CREATE SEQUENCE VEICULO_ID_SEQ;

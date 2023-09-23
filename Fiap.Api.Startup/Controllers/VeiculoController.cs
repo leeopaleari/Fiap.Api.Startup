@@ -2,7 +2,6 @@
 using Fiap.Api.Startup.Models;
 using Fiap.Api.Startup.Repository;
 using Fiap.Api.Startup.Repository.Context;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 

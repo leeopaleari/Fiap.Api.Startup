@@ -10,14 +10,17 @@ public class UsuarioProfile : Profile
     public UsuarioProfile()
     {
         CreateMap<Usuario, OutCreateUserDto>();
+
         CreateMap<InCreateUserDto, Usuario>();
+
         CreateMap<InCreateUserDto, OutCreateUserDto>();
-        CreateMap<Usuario, OutListUserDto>();
+
+        CreateMap<Usuario, OutListUserDto>()
+            .ForMember(dest => dest.Veiculo, opt => opt.MapFrom(src => src.Veiculos));
+
         CreateMap<Usuario, InUpdateUserDto>();
         CreateMap<InUpdateUserDto, Usuario>();
 
         CreateMap<InCreateEnderecoDto, Endereco>();
-
-        CreateMap<Veiculo, Veiculo>();
     }
 }
