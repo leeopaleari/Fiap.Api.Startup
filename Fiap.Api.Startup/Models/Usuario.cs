@@ -33,9 +33,13 @@ public class Usuario
     [Column("DOCUMENTO")]
     public string? Documento { get; set; }
 
-    [JsonIgnore]
+    //[JsonIgnore]
+    [Required(ErrorMessage = "Necessário informar endereço")]
     public virtual Endereco? Endereco { get; set; }
 
-    [JsonIgnore]
+    //[JsonIgnore]
     public virtual IEnumerable<Veiculo>? Veiculos { get; set; }
+
+    //[JsonIgnore]
+    public virtual IEnumerable<Proposta>? Proposta { get; set; }
 }

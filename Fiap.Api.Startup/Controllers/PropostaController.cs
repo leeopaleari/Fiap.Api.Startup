@@ -9,30 +9,30 @@ namespace Fiap.Api.Startup.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VeiculoController : ControllerBase
+    public class PropostaController : ControllerBase
     {
-        private readonly VeiculoRepository _repository;
+        private readonly PropostaRepository _repository;
         private IMapper _mapper;
 
-        public VeiculoController(DatabaseContext dbContext, IMapper mapper)
+        public PropostaController(DatabaseContext dbContext, IMapper mapper)
         {
-            _repository = new VeiculoRepository(dbContext);
+            _repository = new PropostaRepository(dbContext);
             _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<Veiculo> Get()
+        public ActionResult<Proposta> Get()
         {
             try
             {
-                var veiculos = _repository.Listar();
+                var proposta = _repository.Listar();
 
-                if (veiculos == null)
+                if (proposta == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(_mapper.Map<List<Veiculo>>(veiculos));
+                return Ok(_mapper.Map<List<Proposta>>(proposta));
             }
             catch (Exception ex)
             {
@@ -41,18 +41,18 @@ namespace Fiap.Api.Startup.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<Veiculo> Get([FromRoute] int id)
+        public ActionResult<Proposta> Get([FromRoute] int id)
         {
             try
             {
-                var veiculo = _repository.Consultar(id);
+                var proposta = _repository.Consultar(id);
 
-                if (veiculo == null)
+                if (proposta == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(_mapper.Map<Veiculo>(veiculo));
+                return Ok(_mapper.Map<Proposta>(proposta));
             }
             catch (Exception e)
             {
@@ -61,7 +61,7 @@ namespace Fiap.Api.Startup.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Veiculo> Post([FromBody] Veiculo veiculoModel)
+        public ActionResult<Proposta> Post([FromBody] Proposta propostaModel)
         {
             if (!ModelState.IsValid)
             {
@@ -71,29 +71,28 @@ namespace Fiap.Api.Startup.Controllers
             try
             {
 
-                _repository.Inserir(veiculoModel);
+                _repository.Inserir(propostaModel);
 
-                var location = new Uri(Request.GetEncodedUrl() + "/" + veiculoModel.Id);
+                var location = new Uri(Request.GetEncodedUrl() + "/" + propostaModel.Id);
 
-                //return Created(location, usuarioModel);
-                return Created(location, _mapper.Map<Veiculo>(veiculoModel));
+                return Created(location, propostaModel);
             }
             catch (Exception error)
             {
-                return BadRequest(new { message = $"Não foi possível cadastrar o Usuario. Detalhes: {error.Message}" });
+                return BadRequest(new { message = $"Não foi possível cadastrar a Proposta. Detalhes: {error.Message}" });
             }
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Veiculo> Post([FromRoute] int id)
+        public ActionResult<Proposta> Post([FromRoute] int id)
         {
             try
             {
-                var veiculo = _repository.Consultar(id);
+                var proposta = _repository.Consultar(id);
 
-                if (veiculo != null)
+                if (proposta != null)
                 {
-                    _repository.Excluir(veiculo);
+                    _repository.Excluir(proposta);
 
                     return NoContent();
                 }
@@ -107,7 +106,7 @@ namespace Fiap.Api.Startup.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Veiculo> Post([FromRoute] int id, [FromBody] Veiculo veiculoModel)
+        public ActionResult<Proposta> Post([FromRoute] int id, [FromBody] Proposta propostaModel)
         {
             if (!ModelState.IsValid)
             {
@@ -116,21 +115,25 @@ namespace Fiap.Api.Startup.Controllers
 
             try
             {
-                var veiculo = _repository.Consultar(id);
+                var proposta = _repository.Consultar(id);
 
-                if (id != veiculoModel.Id || veiculo == null)
+                if (id != propostaModel.Id || proposta == null)
                 {
                     return NotFound();
                 }
 
-                _mapper.Map(veiculoModel, veiculo);
-                _repository.Update(veiculo);
+                _mapper.Map(propostaModel, proposta);
+                _repository.Update(proposta);
+
                 return NoContent();
             }
             catch (Exception error)
             {
                 return BadRequest(new { message = $"Não foi possível cadastrar o Usuario. Detalhes: {error.Message}" });
             }
+
+
         }
     }
 }
+

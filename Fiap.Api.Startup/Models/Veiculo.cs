@@ -36,12 +36,21 @@ public class Veiculo
     [Required(ErrorMessage = "Campo Ano Fabricação Obrigatório")]
     public int AnoFabricacao { get; set; }
 
+    [Column("RENAVAM")]
+    [Required(ErrorMessage = "Campo Renavam Obrigatório")]
+    public int Renavam { get; set; }
+
     [Column("T_USUARIO_ID")]
-    [Required(ErrorMessage = "Obrigatório informar um usuário")]
+    [Required(ErrorMessage = "Obrigatório informar um usuário id")]
     public int UsuarioId { get; set; }
 
     [JsonIgnore]
-    [Required(ErrorMessage = "Obrigatório informar um usuário")]
-    public Usuario? Usuario { get; set; }
+    public virtual Usuario? Usuario { get; set; }
+
+    //[JsonIgnore]
+    //public virtual int? PropostaId { get; set; }
+
+    [JsonIgnore]
+    public virtual IEnumerable<Proposta>? Proposta { get; set; }
 
 }

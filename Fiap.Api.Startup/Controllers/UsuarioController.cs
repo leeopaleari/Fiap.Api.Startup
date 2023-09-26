@@ -55,7 +55,7 @@ public class UsuarioController : ControllerBase
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<OutCreateUserDto>(usuario));
+            return Ok(usuario);
         }
         catch (Exception e)
         {

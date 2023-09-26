@@ -21,6 +21,7 @@ public class UsuarioRepository
         lista = context.Usuario
             .Include(u => u.Endereco)
             .Include(u => u.Veiculos)
+            .Include(u => u.Proposta)
             .OrderBy(u => u.Id)
             .ToList<Usuario>();
 
@@ -31,6 +32,8 @@ public class UsuarioRepository
     {
         var usuario = context.Usuario
             .Include(e => e.Endereco)
+            .Include(e => e.Veiculos)
+            .Include(u => u.Proposta)
             .FirstOrDefault(user => user.Id == id);
 
         return usuario;

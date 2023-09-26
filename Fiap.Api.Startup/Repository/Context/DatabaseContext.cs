@@ -16,11 +16,22 @@ public class DatabaseContext : DbContext
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Usuario>()
-                .HasMany(u => u.Veiculos)
-                .WithOne(v => v.Usuario)
-                .HasForeignKey(v => v.UsuarioId);
+            .HasMany(u => u.Veiculos)
+            .WithOne(v => v.Usuario)
+            .HasForeignKey(v => v.UsuarioId);
+
+        modelBuilder.Entity<Proposta>()
+            .HasOne(p => p.Usuario)
+            .WithMany(u => u.Proposta)
+            .HasForeignKey(p => p.UsuarioId);
+
+        modelBuilder.Entity<Proposta>()
+            .HasOne(p => p.Veiculo)
+            .WithMany(v => v.Proposta)
+            .HasForeignKey(p => p.VeiculoId);
 
     }
+
     public DatabaseContext(DbContextOptions options) : base(options)
     {
     }
@@ -32,4 +43,5 @@ public class DatabaseContext : DbContext
     public DbSet<Usuario> Usuario { get; set; }
     public DbSet<Endereco> Endereco { get; set; }
     public DbSet<Veiculo> Veiculo { get; set; }
+    public DbSet<Proposta> Proposta { get; set; }
 }

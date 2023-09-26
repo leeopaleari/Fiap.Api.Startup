@@ -19,5 +19,6 @@ public class OutListUserDto
 
     public Endereco? Endereco { get; set; }
     public IEnumerable<Veiculo>? Veiculo { get; set; }
+    public IEnumerable<Proposta>? Proposta{ get; set; }
 
 }
