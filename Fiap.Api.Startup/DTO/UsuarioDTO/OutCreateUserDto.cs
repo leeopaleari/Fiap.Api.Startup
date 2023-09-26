@@ -4,6 +4,7 @@ namespace Fiap.Api.Startup.DTO.UsuarioDTO;
 
 public class OutCreateUserDto
 {
+    public int Id { get; set; }
     public string Nome { get; set; }
 
     public string Sobrenome { get; set; }
@@ -17,5 +18,4 @@ public class OutCreateUserDto
     public string Documento { get; set; }
 
     public Endereco? Endereco { get; set; }
-    public IEnumerable<Veiculo>? Veiculo { get; set; }
 }

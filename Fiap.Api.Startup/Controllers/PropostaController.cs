@@ -101,7 +101,7 @@ namespace Fiap.Api.Startup.Controllers
             }
             catch (Exception error)
             {
-                return BadRequest(new { message = $"Não foi possível cadastrar o Usuario. Detalhes: {error.Message}" });
+                return BadRequest(new { message = $"Não foi possível cadastrar a Proposta. Detalhes: {error.Message}" });
             }
         }
 
@@ -129,7 +129,7 @@ namespace Fiap.Api.Startup.Controllers
             }
             catch (Exception error)
             {
-                return BadRequest(new { message = $"Não foi possível cadastrar o Usuario. Detalhes: {error.Message}" });
+                return BadRequest(new { message = $"Não foi possível cadastrar a Proposta. Detalhes: {error.Message}" });
             }
 
 

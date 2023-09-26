@@ -28,5 +28,8 @@ public class UsuarioProfile : Profile
 
         CreateMap<Proposta, Veiculo>();
         CreateMap<Proposta, Usuario>();
+
+        CreateMap<Veiculo, Veiculo>();
+        CreateMap<Proposta, Proposta>();
     }
 }
